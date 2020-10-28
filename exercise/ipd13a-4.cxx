@@ -7,15 +7,15 @@ namespace ipd
 void sum_prefixes(Int_vec& in_place)
 {
     for(int i = 1; i< in_place.size();i++){
-        in_place[i]= in_place[i]+in_place[i-1];
+        in_place[i] += in_place[i-1];
     }
 }
 
 
 void unsum_prefixes(Int_vec& in_place)
 {
-    for(int i = in_place.size(); i>0;i--){
-        in_place[i]= in_place[i]-in_place[i-1];
+    for(size_t i = in_place.size()-1; i>0;i--){
+        in_place[i] -= in_place[i-1];
     }
 }
 

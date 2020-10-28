@@ -8,7 +8,7 @@ TEST_CASE("sort_refs(int& a, int& b, int& c)")
 {
     int a, b, c;
 
-    SECTION ("a > c") {
+    SECTION ("a > b > c ") {
         a = 5;
         b = 4;
         c = 3;
@@ -79,6 +79,23 @@ TEST_CASE("sort_refs(int& a, int& b, int& c)")
         CHECK (a == 3);
         CHECK (c == 5);
         CHECK (b == 7);
+    }
+
+
+    SECTION ("b > c & b < a") {
+        a = 4;
+        b = 5;
+        c = 3;
+
+        CHECK (sort_refs(a, b, c));
+        CHECK (a == 3);
+        CHECK (b == 4);
+        CHECK (c == 5);
+
+        CHECK (sort_refs(a, c, b));
+        CHECK (a == 3);
+        CHECK (c == 4);
+        CHECK (b == 5);
     }
 
 

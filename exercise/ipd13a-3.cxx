@@ -41,37 +41,28 @@ namespace ipd {
  * (You can K-click the link above in CLion to open it in a browse,
  * where for X is Command on Mac, and [let me know] on Windows.)
  */
-using std::swap;
+    using std::swap;
 
 
-bool sort_refs(int& a, int& b)
-{
-    if (a > b){
-        std::swap(a, b);
-        return true;
+    bool sort_refs(int &a, int &b) {
+        if (a > b) {
+            swap(a, b);
+            return true;
+        }
+        return false;
     }
-    return false;
-}
 
-bool sort_refs(int& a, int& b, int& c)
-{
-    if (a > c){
-        std::swap(a, c);
-        return true;
+    bool sort_refs(int &a, int &b, int &c) {
+
+        bool changed = sort_refs(a, c);
+
+        bool changed2 = sort_refs(a, b);
+
+        bool changed3 = sort_refs(b, c);
+
+        return (changed || changed2 || changed3);
+
+
     }
-    if (a > b){
-        std::swap(a, b);
-        return true;
-    }
-    if (b > c){
-        std::swap(b, c);
-        return true;
-    }
-    return false;
-
-}
-
-
-
 }
 
