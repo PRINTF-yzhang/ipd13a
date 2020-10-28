@@ -39,11 +39,11 @@ void unsum_prefixes(Int_vec& in_place);
 //
 //     Int_vec v1 {2, 4, 6};
 //     Int_vec v2;
-//     sum_prefixes_into(v1, v2);
+//     sum_prefixes_into(v2, v1);
 //     unsum_prefixes(v2);
 //     CHECK( v1 == v2 );
 //
-//     sum_prefixes_into(v1, v2);
+//     sum_prefixes_into(v2, v1);
 //     CHECK( v1 == Int_vec{2, 4, 6} );
 //     CHECK( v2 == Int_vec{2, 4, 6, 2, 6, 12} );
 //
