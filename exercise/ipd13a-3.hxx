@@ -22,13 +22,13 @@ bool sort_refs(int& a, int& b);
 
 // Sorts `a`, `b`, and `c` such that `a <= b` && `b <= c`. Returns `true` if any
 // swapping was necessary or `false` if the order was already correct.
-void sort_refs(int& a, int& b, int& c);
+bool sort_refs(int& a, int& b, int& c);
 
 
 // Sorts `a`, `b`, and `c` such that `a <= b` && `b <= c`. Returns `true` if
 // swapping was necessary or `false` if the order was already correct.
 template <class T>
-void sort_refs(T& a, T& b, T& c)
+bool sort_refs(T& a, T& b, T& c)
 {
     /*
      * Brings std::swap into scope locally inside this function. (Doing it in
@@ -36,8 +36,19 @@ void sort_refs(T& a, T& b, T& c)
      * didn't ask for.)
      */
     using std::swap;
-
-    // TODO: implement
+    if (a > c){
+        std::swap(a, c);
+        return true;
+    }
+    if (a > b){
+        std::swap(a, b);
+        return true;
+    }
+    if (b > c){
+        std::swap(b, c);
+        return true;
+    }
+    return false;
 }
 
 } // end namespace ipd

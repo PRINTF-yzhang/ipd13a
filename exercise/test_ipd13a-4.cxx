@@ -20,24 +20,49 @@ TEST_CASE("sum_prefixes")
     sum_prefixes(v);
     REQUIRE(v == Int_vec{1, 4, 10, 20, 35});
 
-    // TODO: add more tests
+    sum_prefixes(v);
+    REQUIRE(v == Int_vec{1, 5, 15, 35, 70});
 }
 
 
-TEST_CASE("unsum_prefixes_into")
+TEST_CASE("unsum_prefixes")
 {
-    // TODO: add more tests
+    Int_vec v{1, 5, 15, 35, 70};
+
+    unsum_prefixes(v);
+    REQUIRE(v == Int_vec{1, 4, 10, 20, 35});
+
+    unsum_prefixes(v);
+    REQUIRE(v == Int_vec{1, 3, 6, 10, 15});
+
+    unsum_prefixes(v);
+    REQUIRE(v == Int_vec{1, 2, 3, 4, 5});
+
+    unsum_prefixes(v);
+    REQUIRE(v == Int_vec{1, 1, 1, 1, 1});
 }
 
 
 TEST_CASE("sum_prefixes_into")
 {
-    // TODO: add more tests
+     Int_vec v1 {2, 4, 6};
+     Int_vec v2;
+     sum_prefixes_into(v2, v1);
+     unsum_prefixes(v2);
+     CHECK( v1 == v2 );
+
+     sum_prefixes_into(v1, v2);
+     CHECK( v2 == Int_vec{2, 4, 6} );
+     CHECK( v1 == Int_vec{2, 4, 6, 2, 6, 12} );
 }
 
 
 TEST_CASE("contains_prefix_sums")
 {
+
+    CHECK(contains_prefix_sums(Int_vec{1, 2, 3}, Int_vec{1, 1, 1}));
+    CHECK_FALSE(contains_prefix_sums(Int_vec{1, 2, 3}, Int_vec{0, 0, 5}));
+    CHECK_FALSE(contains_prefix_sums(Int_vec{1, 2, 3}, Int_vec{1, 1}) );
     Int_vec v1{1, 1, 1, 2, 1};
     Int_vec v2{1, 2, 3, 5, 6};
 
